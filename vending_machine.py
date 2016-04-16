@@ -17,7 +17,8 @@ class VendingMachine:
             self.message = 'Enjoy!'
             return 'product'
         else:
-            raise RuntimeError("Cannot buy product without payment")
+            return None
+            #raise RuntimeError("Cannot buy product without payment")
 
     def get_message(self):
         return self.message

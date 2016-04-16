@@ -23,4 +23,23 @@ class TestVendingMachine:
         # Assert
         assert_greater(result, 0)
 
+    def test_buy_product_with_no_payment_expects_nothing(self):
+        # Arrange
+        vending_machine = VendingMachine()
 
+        # Act
+        result = vending_machine.buy_product()
+
+        # Assert
+        assert_is_none(result)
+
+    def test_buy_product_with_payment_expects_product(self):
+        # Arrange
+        vending_machine = VendingMachine()
+        vending_machine.insert_coin(1)
+
+        # Act
+        result = vending_machine.buy_product()
+
+        # Assert
+        assert_is_not_none(result)
