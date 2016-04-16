@@ -1,19 +1,21 @@
+from payments import PaymentProcessor
+
 class VendingMachine:
     def __init__(self):
-        self.payment = 0
+        self.payment_processor = PaymentProcessor()
         self.message = 'Please insert money'
 
     def release_change(self):
-        if self.payment > 0:
+        if self.payment_processor.is_payment_made():
             return 1
         else:
             return 0
 
     def insert_coin(self, count):
-        self.payment = count * 25
+        self.payment_processor.make_payment(count)
 
     def buy_product(self):
-        if self.payment != 0:
+        if self.payment_processor.is_payment_made():
             self.message = 'Enjoy!'
             return 'product'
         else:
