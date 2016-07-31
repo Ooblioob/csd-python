@@ -66,4 +66,4 @@ class TestVendingMachine:
         vending_machine.buy_product()
 
         # Assert
-        assert_equals(vending_machine.get_message(), "Enjoy!")
+        assert_equals(vending_machine.message, "Enjoy!")
