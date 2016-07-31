@@ -67,3 +67,15 @@ class TestVendingMachine:
 
         # Assert
         assert_equals(vending_machine.message, "Enjoy!")
+
+    def test_get_message_returns_insert_money_message_when_purchase_fails(self):
+        # Arrange
+        vending_machine = VendingMachine()
+
+        # Act
+        try:
+            vending_machine.buy_product()
+            assert False, "buy_product should have failed with exception"
+        except:
+            # Assert
+            assert_equals(vending_machine.message, "Please insert money")
