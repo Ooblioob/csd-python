@@ -1,9 +1,9 @@
 class PaymentProcessor:
     def __init__(self):
-        self.payment = 0
+        self.payments = 0
 
     def is_payment_made(self):
-        return self.payment > 0
+        return self.payments > 0
 
     def make_payment(self, count):
-        self.payment = count * 25
+        self.payments += count

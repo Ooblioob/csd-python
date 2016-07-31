@@ -13,7 +13,7 @@ class TestPaymentProcessor:
         result = self.processor.is_payment_made()
 
         # Assert
-        assert_false(result)
+        assert_false(result, "is_payment_made should have returned false for no payment")
 
     def test_is_payment_made_with_a_payment(self):
         # Arrange
@@ -23,7 +23,7 @@ class TestPaymentProcessor:
         result = self.processor.is_payment_made()
 
         # Assert
-        assert_true(result)
+        assert_true(result, "should have returned true because a payment was made")
 
     def test_make_payment_expects_payment_nonzero(self):
         # Arrange
@@ -32,4 +32,4 @@ class TestPaymentProcessor:
         self.processor.make_payment(1)
 
         # Assert
-        assert_not_equal(0, self.processor.payment)
+        assert_not_equal(0, self.processor.payments)
