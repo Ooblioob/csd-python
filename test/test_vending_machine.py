@@ -21,6 +21,7 @@ class TestVendingMachine:
         result = vending_machine.release_change()
 
         # Assert
+        assert_true(result > 0)
         assert_greater(result, 0)
 
 
