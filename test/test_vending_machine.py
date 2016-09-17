@@ -10,6 +10,7 @@ class TestVendingMachine:
         result = vending_machine.release_change()
 
         # Assert
+        assert_true(result == 0)
         assert_equals(0, result)
 
 
