@@ -1,4 +1,5 @@
 import unittest
+from hamcrest import *
 from nose.tools import *
 from payments import PaymentProcessor
 
@@ -14,6 +15,7 @@ class TestPaymentProcessor:
 
         # Assert
         assert_false(result)
+        assert_that(result, is_(equal_to(False)))
 
     def test_is_payment_made_with_a_payment(self):
         # Arrange
@@ -24,6 +26,7 @@ class TestPaymentProcessor:
 
         # Assert
         assert_true(result)
+        assert_that(result, is_(equal_to(True)))
 
     def test_make_payment_expects_payment_nonzero(self):
         # Arrange
@@ -33,3 +36,4 @@ class TestPaymentProcessor:
 
         # Assert
         assert_not_equal(0, self.processor.payment)
+        assert_that(self.processor.payment, is_not(equal_to(0)))
