@@ -10,6 +10,7 @@ class TestVendingMachine:
         result = vending_machine.release_change()
 
         # Assert
+        assert_true(result == 0)
         assert_equals(0, result)
 
     def test_release_change_with_payment_expects_change_returned(self):
