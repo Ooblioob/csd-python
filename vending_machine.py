@@ -1,6 +1,5 @@
 from payments import PaymentProcessor
 from notifications import HQ
-from messages import MessageCenter
 
 class VendingMachine:
     def __init__(self):
