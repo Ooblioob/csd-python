@@ -14,6 +14,8 @@ class TestVendingMachine:
         result = self.vending_machine.release_change()
 
         # Assert
+        assert_true(result == 0)
+        assert_equals(0, result)
         assert_that(result, is_(equal_to(0)))
 
     def test_release_change_with_payment_expects_change_returned(self):
@@ -24,6 +26,8 @@ class TestVendingMachine:
         result = self.vending_machine.release_change()
 
         # Assert
+        assert_true(result > 0)
+        assert_greater(result, 0)
         assert_that(result, is_(greater_than(0)))
 
     @unittest.skip("buy_product now returns an exception")
@@ -34,6 +38,7 @@ class TestVendingMachine:
         result = self.vending_machine.buy_product()
 
         # Assert
+        assert_is_none(result)
         assert_that(result, is_(none()))
 
     def test_buy_product_with_payment_expects_product(self):
@@ -44,17 +49,19 @@ class TestVendingMachine:
         result = self.vending_machine.buy_product()
 
         # Assert
+        assert_is_not_none(result)
         assert_that(result, is_(not_none()))
 
-    @raises(RuntimeError)
+    #@raises(RuntimeError)
     def test_buy_product_with_no_payment_expects_exception(self):
         # Arrange
 
         # Act
-        result = self.vending_machine.buy_product()
+        #result = self.vending_machine.buy_product()
 
         # Assert
-        # an exception should be raised
+        assert_raises(RuntimeError, self.vending_machine.buy_product)
+        assert_that(self.vending_machine.buy_product, raises(RuntimeError))
 
     def test_get_message_returns_success_message_with_successful_purchase(self):
         # Arrange
@@ -64,6 +71,7 @@ class TestVendingMachine:
         self.vending_machine.buy_product()
 
         # Assert
+        assert_equals(self.vending_machine.message, "Enjoy!")
         assert_that(self.vending_machine.message, is_(equal_to("Enjoy!")))
 
     def test_get_message_returns_insert_money_message_when_purchase_fails(self):
@@ -75,4 +83,5 @@ class TestVendingMachine:
             assert False, "buy_product should have failed with exception"
         except:
             # Assert
+            assert_equals(self.vending_machine.message, "Please insert money")
             assert_that(self.vending_machine.message, is_(equal_to("Please insert money")))
